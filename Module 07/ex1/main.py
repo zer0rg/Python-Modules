@@ -2,7 +2,7 @@ from ex0 import CreatureCard
 from . import ArtifactCard, SpellCard, Deck
 
 
-def main():
+def main() -> None:
     print("=== DataDeck Deck Builder ===")
     print("Building deck with different card types...")
 

@@ -7,7 +7,7 @@ Demonstrates multiple inheritance with EliteCard
 from . import EliteCard
 
 
-def main():
+def main() -> None:
     print("=== DataDeck Ability System ===")
     
     elite = EliteCard("Arcane Warrior", cost=5, rarity="Legendary")

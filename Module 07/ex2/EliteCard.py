@@ -6,7 +6,7 @@ class EliteCard(Card, Combatable, Magical):
 
     def __init__(self, name: str, cost: int, rarity: str,
                  attack_power: int = 5, defense: int = 3,
-                 max_mana: int = 10):
+                 max_mana: int = 10) -> None:
         super().__init__(name, cost, rarity)
         self.attack_power = attack_power
         self.defense = defense
@@ -31,7 +31,10 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def defend(self, incoming_damage: int) -> dict:
-        damage_blocked = min(incoming_damage, self.defense)
+        if incoming_damage < self.defense:
+            damage_blocked = incoming_damage
+        else:
+            damage_blocked = self.defense
         damage_taken = incoming_damage - damage_blocked
         return {
             "defender": self.name,
