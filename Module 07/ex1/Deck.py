@@ -5,7 +5,7 @@ import random
 class Deck:
 
     def __init__(self):
-        self.cards = []
+        self.cards: list[Card] = []
 
     def add_card(self, card: Card) -> None:
         self.cards.append(card)
@@ -26,15 +26,15 @@ class Deck:
         return None
 
     def get_deck_stats(self) -> dict:
-        total_cards = len(self.cards)
-        creatures = 0
-        spells = 0
-        artifacts = 0
-        total_cost = 0
+        total_cards: int = len(self.cards)
+        creatures: int = 0
+        spells: int = 0
+        artifacts: int = 0
+        total_cost: int = 0
 
         for card in self.cards:
             total_cost += card.cost
-            card_type = card.__class__.__name__
+            card_type: str = card.__class__.__name__
             if card_type == "CreatureCard":
                 creatures += 1
             elif card_type == "SpellCard":

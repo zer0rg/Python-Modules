@@ -10,14 +10,10 @@ class ArtifactCard(Card):
         self.effect = effect
 
     def play(self, game_state: dict) -> dict:
-        game_state["mana"] -= self.cost
-        game_state["artifacts_in_play"] = game_state.get("artifacts_in_play", [])
-        game_state["artifacts_in_play"].append(self.name)
         result = {
             "card_played": self.name,
             "mana_used": self.cost,
             "effect": f"Permanent: {self.effect}",
-            "game_state": game_state
         }
         return result
 
