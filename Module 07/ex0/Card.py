@@ -19,10 +19,12 @@ class Card(ABC):
             "rarity": self.rarity,
             "type": self.__class__.__name__
         }
-        if hasattr(self, 'attack_power'):
-            info["attack"] = self.attack_power
-        if hasattr(self, 'health'):
-            info["health"] = self.health
+        attack = getattr(self, 'attack_power', None)
+        if attack is not None:
+            info["attack"] = attack
+        health = getattr(self, 'health', None)
+        if health is not None:
+            info["health"] = health
         return info
 
     def is_playable(self, available_mana: int) -> bool:
